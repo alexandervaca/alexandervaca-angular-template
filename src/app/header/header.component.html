@@ -1,0 +1,57 @@
+<header class="header">
+    <div class="header__top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="header__top__left">
+                        <a href="#"><img src="assets/img/logo.png" alt=""/></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__auth">
+                            <button *ngIf="!isLogged" class="btn btn-secondary"  routerLink="/login"> Iniciar sesión</button>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <button *ngIf="!isLogged" class="btn btn-secondary"  routerLink="/register" style="margin-left: 10px;">Registrarse</button>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <span *ngIf="isLogged" style="margin-right: 20px; font-weight: bold;"> Bienvenido {{ username | titlecase }}</span>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <button *ngIf="isLogged" class="btn btn-secondary" (click)="cerrarSesion()" routerLink="/login">Cerrar sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color: #F3F6FA;">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li *ngIf="isCliente || !isLogged"><a routerLink="/">Inicio</a></li>
+                        <li *ngIf="isCliente || !isLogged"><a routerLink="/contacto">Contacto</a></li>
+                        <li *ngIf="isCliente"><a href="/categorias">Tienda</a></li>
+                        <li *ngIf="isCliente"><a routerLink="/compras">Compras</a></li>
+                        <li *ngIf="isProveedor"><a routerLink="/proveedor/productos">Productos</a></li>
+                        <li *ngIf="isProveedor"><a routerLink="/proveedor/notificaciones">Notificaciones</a></li>
+                        <li *ngIf="isAdmin"><a routerLink="/administracion">Administración</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>

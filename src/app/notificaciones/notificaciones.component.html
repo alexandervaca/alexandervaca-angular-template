@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div style="width: 100%;">
+        <h3 style="width: 50%; margin-left: 44%;">Notificaciones</h3>
+    </div>
+    <table *ngIf="notificaciones !== undefined && notificaciones.length > 0 " class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Mensaje</th>
+                <th scope="col">Comprador</th>
+                <th scope="col">Número de compra</th>
+                <th scope="col">Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let notificacion of this.notificaciones">
+                <td>{{ notificacion.message }}</td>
+                <td>{{ notificacion.nombreComprador }}</td>
+                <td>{{ notificacion.idCompra }}</td>
+                <td>
+                    <span style="cursor: pointer;" (click)="irAlDetalle(notificacion.idCompra)">
+                        <i class="fas fa-caret-square-down"></i></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 style="margin-top: 20px;" *ngIf="notificaciones === undefined || notificaciones.length === 0">No posee notificaciones actualmente.</h3>
+</div>
